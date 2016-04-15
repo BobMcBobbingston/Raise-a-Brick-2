@@ -52,7 +52,7 @@ while true do
 		-- Determine follow owner.
 		if rand(1, 6) == 4 then
 			if game.Players:findFirstChild(owner.Value) then
-				behave.Value == 4
+				behave.Value = 4
 			else
 				brick:Destroy()
 			end
@@ -90,7 +90,7 @@ while true do
 	if behave.Value == 1 then
 		if rand(1, 10) > 1 then
 			for i = 0, rand(1, 15) do
-				brick.BodyGyro.CFrame * CFrame.fromEulerAnglesXYZ(0, rand(-1, 1) * 0.1, 0)
+				brick.BodyGyro.CFrame = brick.BodyGyro.CFrame * CFrame.fromEulerAnglesXYZ(0, rand(-1, 1) * 0.1, 0)
 				wait(.1)
 				if behave.Value ~= 1 then
 					break
@@ -100,7 +100,7 @@ while true do
 
 		wait(.5)
 		if rand(1,2) == 1 then
-			for i = 0, rand(1, 5)
+			for i = 0, rand(1, 5) do
 				brick.Velocity = brick.CFrame.lookVector * rand(13, 13 + speed.Value)
 				if behave.Value ~= 1 then
 					break
@@ -189,7 +189,7 @@ while true do
 
 			local target
 			local counter = 0
-			for _, p in pairs(game.Players:getPlayers())
+			for _, p in pairs(game.Players:getPlayers()) do
 				if rand(1, 4) == 3 then
 					target = p.Character
 				end
@@ -206,45 +206,46 @@ while true do
 					wait(.1)
 					if counter > 600 then
 						break -- Brick may miss target and circle it forever.
+					end
+				end
+					connection:disconnect()
+			end
+			brick.BodYGyro.CFrame = CFrame.new(brick.Position)
+			behave.Value = 0
+		end
+
+		-- Attack another brick.
+		if behave.Value == 6 then
+			brick.Velocity = Vector3.new(0, 50, 0)
+			wait(.1)
+			brick.RotVelocity = Vector3.new(0, 100, 0)
+			wait(2)
+
+			local target
+			local counter
+			for _, v in pairs(workspace.Objects:getChildren()) do
+				if rand(1, 4) == 3 and v.alignment.Value < 0 then
+					target = v
 				end
 			end
-			connection:disconnect()
-		end
-		brick.BodYGyro.CFrame = CFrame.new(brick.Position)
-		behave.Value = 0
-	end
 
-	-- Attack another brick.
-	if behave.Value == 6 then
-		brick.Velocity = Vector3.new(0, 50, 0)
-		wait(.1)
-		brick.RotVelocity = Vector3.new(0, 100, 0)
-		wait(2)
-
-		local target
-		local counter
-		for _, v in pairs(workspace.Objects:getChildren())
-			if rand(1, 4) == 3 and v.alignment.Value < 0 then
-				target = v
-			end
-		end
-
-		if target ~= nil then
-			brick.BodyGyro.CFrame = CFrame.new(brick.Position, target.Head.Position)
-			connection = script.Parent.Touched:connect(onBrickAttack)
-			wait(1.5)
-			while target.Parent ~= nil and behave.Value == 6 do
-				brick.BodyGyro.CFrame = CFrame.new(brick.Position, Vector3.new(target.Head.Position.x, brick.Position.y, target.Head.Position.z))
-				brick.Velocity = brick.Cframe.lookVector * (15 + speed.Value)
-				counter = counter + 1
-				wait(.1)
-				if counter > 600 then
-					break -- Brick may miss target and circle it forever.
+			if target ~= nil then
+				brick.BodyGyro.CFrame = CFrame.new(brick.Position, target.Head.Position)
+				connection = script.Parent.Touched:connect(onBrickAttack)
+				wait(1.5)
+				while target.Parent ~= nil and behave.Value == 6 do
+					brick.BodyGyro.CFrame = CFrame.new(brick.Position, Vector3.new(target.Head.Position.x, brick.Position.y, target.Head.Position.z))
+					brick.Velocity = brick.Cframe.lookVector * (15 + speed.Value)
+					counter = counter + 1
+					wait(.1)
+					if counter > 600 then
+						break -- Brick may miss target and circle it forever.
+					end
 				end
+				connection:disconnect()
 			end
-			connection:disconnect()
+			brick.BodyGyro.CFrame = CFrame.new(brick.Position)
+			behave.Value = 0
 		end
-		brick.BodyGyro.CFrame = CFrame.new(brick.Position)
-		behave.Value = 0
 	end
 end
