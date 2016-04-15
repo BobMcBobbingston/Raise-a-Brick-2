@@ -11,7 +11,7 @@ if script.Parent:isA('BasePart') then
 					player.Red.Value = player.Red.Value + 1
 				elseif script.Parent.BrickColor == BrickColor.new(23) then
 					player.Blue.Value = player.Blue.Value + 1
-				elseif script.Parent.BrickColor = BrickColor.new(24) then
+				elseif script.Parent.BrickColor == BrickColor.new(24) then
 					player.Yellow.Value = player.Yellow.Value + 1
 				elseif script.Parent.BrickColor == BrickColor.new(26) then
 					player.Evil.Value = player.Evil.Value + 1
@@ -20,27 +20,27 @@ if script.Parent:isA('BasePart') then
 				elseif script.Parent.BrickColor == BrickColor.new(104) then
 					player.Speed.Value = player.Speed.Value + 1
 				elseif script.Parent.BrickColor == BrickColor.new(28) then
-					player.Red.Value = Player.Red.Value + 10
-					player.Blue.Value = Player.Blue.Value + 10
-					player.Yellow.Value = Player.Yellow.Value + 10
-					player.Evil.Value = Player.Bad.Value + 6
-					player.Good.Value = Player.Good.Value + 6
-					player.Speed.Value = Player.Speed.Value + 3
-					player.Special.Value = Player.Special.Value + 1
+					player.Red.Value = player.Red.Value + 10
+					player.Blue.Value = player.Blue.Value + 10
+					player.Yellow.Value = player.Yellow.Value + 10
+					player.Evil.Value = player.Bad.Value + 6
+					player.Good.Value = player.Good.Value + 6
+					player.Speed.Value = player.Speed.Value + 3
+					player.Special.Value = player.Special.Value + 1
 				elseif script.Parent.BrickColor == BrickColor.new(11) then
-					player.Red.Value = Player.Red.Value + 150
-					player.Blue.Value = Player.Blue.Value + 150
-					player.Yellow.Value = Player.Yellow.Value + 150
-					player.Evil.Value = Player.Bad.Value + 50
-					player.Good.Value = Player.Good.Value + 50
-					player.Speed.Value = Player.Speed.Value + 15
-					player.Special.Value = Player.Special.Value + 4
+					player.Red.Value = player.Red.Value + 150
+					player.Blue.Value = player.Blue.Value + 150
+					player.Yellow.Value = player.Yellow.Value + 150
+					player.Evil.Value = player.Bad.Value + 50
+					player.Good.Value = player.Good.Value + 50
+					player.Speed.Value = player.Speed.Value + 15
+					player.Special.Value = player.Special.Value + 4
 				elseif script.Parent.BrickColor == BrickColor.new(192) then
 					player.Special.Value = player.Special.Value + 1
 				end
 			end
 			ting = 0
-			connection:Disconnect()
+			connection:disconnect()
 			script.Parent:Destroy()
 		end
 	end

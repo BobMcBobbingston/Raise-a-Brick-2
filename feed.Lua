@@ -158,7 +158,7 @@ while true do
 	if behave.Value == 4 then
 		local player = workspace:findFirstChild(owner.Value)
 		if player then
-			while player ~= nil and player.Humanoid.Health > 0 and behaviour.Value == 4 do
+			while player ~= nil and player.Humanoid.Health > 0 and behave.Value == 4 do
 				brick.BodyGyro.CFrame = CFrame.new(brick.Position, player.Torso.Position)
 				brick.Velocity = brick.CFrame.lookVector * (13 + speed.Value)
 				if brick.Parent:findFirstChild('food') then
